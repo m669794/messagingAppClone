@@ -21,6 +21,15 @@
     </ItemGroup>
 
     <ItemGroup>
+        <Compile Update="CircularPB.cs">
+            <SubType>Code</SubType>
+        </Compile>
+        <Compile Update="CircularLabel.cs">
+            <SubType>Code</SubType>
+        </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
       <Compile Update="Registration.cs">
         <SubType>Form</SubType>
       </Compile>

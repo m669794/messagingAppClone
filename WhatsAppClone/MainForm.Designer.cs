@@ -33,6 +33,8 @@ partial class MainForm
     {
         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
         panel1 = new System.Windows.Forms.Panel();
+        closePB = new System.Windows.Forms.PictureBox();
+        pictureBox2 = new System.Windows.Forms.PictureBox();
         panel2 = new System.Windows.Forms.Panel();
         circularPB3 = new WhatsAppClone.CircularPB();
         loggedinNameLabel = new System.Windows.Forms.Label();
@@ -41,21 +43,19 @@ partial class MainForm
         label1 = new System.Windows.Forms.Label();
         label2 = new System.Windows.Forms.Label();
         circularPB2 = new WhatsAppClone.CircularPB();
-        flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+        UserCardsFP = new System.Windows.Forms.FlowLayoutPanel();
         flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
         richTextBox1 = new System.Windows.Forms.RichTextBox();
         pictureBox1 = new System.Windows.Forms.PictureBox();
-        pictureBox2 = new System.Windows.Forms.PictureBox();
-        closePB = new System.Windows.Forms.PictureBox();
         panel1.SuspendLayout();
+        ((System.ComponentModel.ISupportInitialize)closePB).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
         panel2.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)circularPB3).BeginInit();
         ((System.ComponentModel.ISupportInitialize)loggedinDpPB).BeginInit();
         panel3.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)circularPB2).BeginInit();
         ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-        ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-        ((System.ComponentModel.ISupportInitialize)closePB).BeginInit();
         SuspendLayout();
         // 
         // panel1
@@ -68,6 +68,24 @@ partial class MainForm
         panel1.Name = "panel1";
         panel1.Size = new System.Drawing.Size(839, 91);
         panel1.TabIndex = 0;
+        // 
+        // closePB
+        // 
+        closePB.Anchor = ((System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right));
+        closePB.Location = new System.Drawing.Point(773, 41);
+        closePB.Name = "closePB";
+        closePB.Size = new System.Drawing.Size(45, 45);
+        closePB.TabIndex = 0;
+        closePB.TabStop = false;
+        closePB.Click += closePB_Click;
+        // 
+        // pictureBox2
+        // 
+        pictureBox2.Location = new System.Drawing.Point(773, 43);
+        pictureBox2.Name = "pictureBox2";
+        pictureBox2.Size = new System.Drawing.Size(45, 45);
+        pictureBox2.TabIndex = 0;
+        pictureBox2.TabStop = false;
         // 
         // panel2
         // 
@@ -150,14 +168,14 @@ partial class MainForm
         circularPB2.TabIndex = 1;
         circularPB2.TabStop = false;
         // 
-        // flowLayoutPanel1
+        // UserCardsFP
         // 
-        flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left));
-        flowLayoutPanel1.BackColor = System.Drawing.Color.WhiteSmoke;
-        flowLayoutPanel1.Location = new System.Drawing.Point(1, 95);
-        flowLayoutPanel1.Name = "flowLayoutPanel1";
-        flowLayoutPanel1.Size = new System.Drawing.Size(323, 355);
-        flowLayoutPanel1.TabIndex = 3;
+        UserCardsFP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left));
+        UserCardsFP.BackColor = System.Drawing.Color.WhiteSmoke;
+        UserCardsFP.Location = new System.Drawing.Point(1, 95);
+        UserCardsFP.Name = "UserCardsFP";
+        UserCardsFP.Size = new System.Drawing.Size(323, 355);
+        UserCardsFP.TabIndex = 3;
         // 
         // flowLayoutPanel2
         // 
@@ -189,23 +207,6 @@ partial class MainForm
         pictureBox1.TabIndex = 6;
         pictureBox1.TabStop = false;
         // 
-        // pictureBox2
-        // 
-        pictureBox2.Location = new System.Drawing.Point(773, 43);
-        pictureBox2.Name = "pictureBox2";
-        pictureBox2.Size = new System.Drawing.Size(45, 45);
-        pictureBox2.TabIndex = 0;
-        pictureBox2.TabStop = false;
-        // 
-        // closePB
-        // 
-        closePB.Location = new System.Drawing.Point(773, 41);
-        closePB.Name = "closePB";
-        closePB.Size = new System.Drawing.Size(45, 45);
-        closePB.TabIndex = 0;
-        closePB.TabStop = false;
-        closePB.Click += closePB_Click;
-        // 
         // MainForm
         // 
         AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -215,7 +216,7 @@ partial class MainForm
         Controls.Add(pictureBox1);
         Controls.Add(richTextBox1);
         Controls.Add(flowLayoutPanel2);
-        Controls.Add(flowLayoutPanel1);
+        Controls.Add(UserCardsFP);
         Controls.Add(panel3);
         Controls.Add(panel2);
         Controls.Add(panel1);
@@ -225,14 +226,14 @@ partial class MainForm
         Text = "MainForm";
         Load += MainForm_Load;
         panel1.ResumeLayout(false);
+        ((System.ComponentModel.ISupportInitialize)closePB).EndInit();
+        ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
         panel2.ResumeLayout(false);
         ((System.ComponentModel.ISupportInitialize)circularPB3).EndInit();
         ((System.ComponentModel.ISupportInitialize)loggedinDpPB).EndInit();
         panel3.ResumeLayout(false);
         ((System.ComponentModel.ISupportInitialize)circularPB2).EndInit();
         ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-        ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-        ((System.ComponentModel.ISupportInitialize)closePB).EndInit();
         ResumeLayout(false);
     }
 
@@ -257,7 +258,7 @@ partial class MainForm
 
     private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
 
-    private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+    private System.Windows.Forms.FlowLayoutPanel UserCardsFP;
 
     private System.Windows.Forms.Panel panel3;
 

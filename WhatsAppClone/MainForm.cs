@@ -27,6 +27,27 @@ public partial class MainForm : Form
             loggedinDpPB.BackgroundImage = (Image)converter.ConvertFrom(loggedinPB);
         }
         
+        DatabaseConnection connection = new DatabaseConnection();
+        connection.con.Open();
+        MySqlCommand cmd;
+        cmd = connection.con.CreateCommand();
+        
+        cmd.CommandText = "select * from users where email!=@loggedinemail";
+        cmd.Parameters.AddWithValue("@loggedinemail", loggedinEmail);
+        
+        MySqlDataReader reader = cmd.ExecuteReader();
+
+        while (reader.Read())
+        {
+            byte[] currentdp = (byte[])reader[3];
+            string name = (string)reader[2];
+            
+            UserCard currentUser = new UserCard(currentdp, name);
+            UserCardsFP.Controls.Add(currentUser);
+            
+        }
+        
+        
     }
 
     private void closePB_Click(object sender, EventArgs e)
@@ -42,5 +63,6 @@ public partial class MainForm : Form
         cmd.ExecuteNonQuery();
         connection.con.Close();
         this.Close();
+        Application.Exit();
     }
 }

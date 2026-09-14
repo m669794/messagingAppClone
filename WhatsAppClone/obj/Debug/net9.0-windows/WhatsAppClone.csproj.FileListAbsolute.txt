@@ -50,3 +50,4 @@ C:\Users\Mazzy\RiderProjects\WhatsAppClone\WhatsAppClone\obj\Debug\net9.0-window
 C:\Users\Mazzy\RiderProjects\WhatsAppClone\WhatsAppClone\obj\Debug\net9.0-windows\WhatsAppClone.Registration.resources
 C:\Users\Mazzy\RiderProjects\WhatsAppClone\WhatsAppClone\bin\Debug\net9.0-windows\Icons\icons8-user-100.png
 C:\Users\Mazzy\RiderProjects\WhatsAppClone\WhatsAppClone\obj\Debug\net9.0-windows\WhatsAppClone.MainForm.resources
+C:\Users\Mazzy\RiderProjects\WhatsAppClone\WhatsAppClone\obj\Debug\net9.0-windows\WhatsAppClone.sourcelink.json
