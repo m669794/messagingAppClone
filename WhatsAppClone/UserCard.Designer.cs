@@ -33,9 +33,9 @@ partial class UserCard
     {
         userDpPb = new WhatsAppClone.CircularPB();
         userNameLabel = new System.Windows.Forms.Label();
-        label2 = new System.Windows.Forms.Label();
+        lastMessageLBL = new System.Windows.Forms.Label();
         pictureBox1 = new System.Windows.Forms.PictureBox();
-        circularLabel1 = new WhatsAppClone.CircularLabel();
+        newMessagesCountLBL = new WhatsAppClone.CircularLabel();
         ((System.ComponentModel.ISupportInitialize)userDpPb).BeginInit();
         ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
         SuspendLayout();
@@ -48,6 +48,7 @@ partial class UserCard
         userDpPb.Size = new System.Drawing.Size(55, 55);
         userDpPb.TabIndex = 0;
         userDpPb.TabStop = false;
+        userDpPb.Click += userDpPb_Click;
         // 
         // userNameLabel
         // 
@@ -57,16 +58,19 @@ partial class UserCard
         userNameLabel.Size = new System.Drawing.Size(73, 29);
         userNameLabel.TabIndex = 1;
         userNameLabel.Text = "label1";
+        userNameLabel.Click += userNameLabel_Click;
         // 
-        // label2
+        // lastMessageLBL
         // 
-        label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
-        label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-        label2.Location = new System.Drawing.Point(100, 32);
-        label2.Name = "label2";
-        label2.Size = new System.Drawing.Size(73, 29);
-        label2.TabIndex = 2;
-        label2.Text = "label2";
+        lastMessageLBL.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        lastMessageLBL.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+        lastMessageLBL.Location = new System.Drawing.Point(100, 32);
+        lastMessageLBL.Name = "lastMessageLBL";
+        lastMessageLBL.Size = new System.Drawing.Size(167, 29);
+        lastMessageLBL.TabIndex = 2;
+        lastMessageLBL.Text = "label2";
+        lastMessageLBL.Visible = false;
+        lastMessageLBL.Click += lastMessageLBL_Click;
         // 
         // pictureBox1
         // 
@@ -75,39 +79,44 @@ partial class UserCard
         pictureBox1.Size = new System.Drawing.Size(23, 22);
         pictureBox1.TabIndex = 3;
         pictureBox1.TabStop = false;
+        pictureBox1.Click += pictureBox1_Click;
         // 
-        // circularLabel1
+        // newMessagesCountLBL
         // 
-        circularLabel1.BackColor = System.Drawing.Color.LawnGreen;
-        circularLabel1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
-        circularLabel1.Location = new System.Drawing.Point(289, 15);
-        circularLabel1.Name = "circularLabel1";
-        circularLabel1.Size = new System.Drawing.Size(18, 24);
-        circularLabel1.TabIndex = 5;
-        circularLabel1.Text = "1";
+        newMessagesCountLBL.BackColor = System.Drawing.Color.LawnGreen;
+        newMessagesCountLBL.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        newMessagesCountLBL.Location = new System.Drawing.Point(289, 15);
+        newMessagesCountLBL.Name = "newMessagesCountLBL";
+        newMessagesCountLBL.Size = new System.Drawing.Size(18, 24);
+        newMessagesCountLBL.TabIndex = 5;
+        newMessagesCountLBL.Text = "1";
+        newMessagesCountLBL.Visible = false;
+        newMessagesCountLBL.Click += newMessagesCountLBL_Click;
         // 
         // UserCard
         // 
         AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
         AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-        Controls.Add(circularLabel1);
+        Controls.Add(newMessagesCountLBL);
         Controls.Add(pictureBox1);
-        Controls.Add(label2);
+        Controls.Add(lastMessageLBL);
         Controls.Add(userNameLabel);
         Controls.Add(userDpPb);
         Size = new System.Drawing.Size(323, 55);
         Load += UserCard_Load;
+        Click += UserCard_Click;
         ((System.ComponentModel.ISupportInitialize)userDpPb).EndInit();
         ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
         ResumeLayout(false);
     }
 
-    private WhatsAppClone.CircularLabel circularLabel1;
+    
 
     private System.Windows.Forms.PictureBox pictureBox1;
-
-    private System.Windows.Forms.Label userNameLabel;
-    private System.Windows.Forms.Label label2;
+    
+    public WhatsAppClone.CircularLabel newMessagesCountLBL;
+    public System.Windows.Forms.Label userNameLabel;
+    public System.Windows.Forms.Label lastMessageLBL;
 
     private WhatsAppClone.CircularPB userDpPb;
 

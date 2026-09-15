@@ -27,6 +27,12 @@
         <Compile Update="CircularLabel.cs">
             <SubType>Code</SubType>
         </Compile>
+        <Compile Update="SenderMessage.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Update="RecMessage.cs">
+          <SubType>Form</SubType>
+        </Compile>
     </ItemGroup>
 
     <ItemGroup>

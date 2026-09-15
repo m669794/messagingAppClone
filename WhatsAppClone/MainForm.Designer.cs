@@ -36,26 +36,26 @@ partial class MainForm
         closePB = new System.Windows.Forms.PictureBox();
         pictureBox2 = new System.Windows.Forms.PictureBox();
         panel2 = new System.Windows.Forms.Panel();
-        circularPB3 = new WhatsAppClone.CircularPB();
+        RefreshPB = new WhatsAppClone.CircularPB();
         loggedinNameLabel = new System.Windows.Forms.Label();
         loggedinDpPB = new WhatsAppClone.CircularPB();
         panel3 = new System.Windows.Forms.Panel();
-        label1 = new System.Windows.Forms.Label();
-        label2 = new System.Windows.Forms.Label();
-        circularPB2 = new WhatsAppClone.CircularPB();
+        currentUserLastSeenLabel = new System.Windows.Forms.Label();
+        currentUserNameLabel = new System.Windows.Forms.Label();
+        currentUserDpPb = new WhatsAppClone.CircularPB();
         UserCardsFP = new System.Windows.Forms.FlowLayoutPanel();
-        flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-        richTextBox1 = new System.Windows.Forms.RichTextBox();
-        pictureBox1 = new System.Windows.Forms.PictureBox();
+        messagesFP = new System.Windows.Forms.FlowLayoutPanel();
+        messageRTB = new System.Windows.Forms.RichTextBox();
+        sendPB = new WhatsAppClone.CircularPB();
         panel1.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)closePB).BeginInit();
         ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
         panel2.SuspendLayout();
-        ((System.ComponentModel.ISupportInitialize)circularPB3).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)RefreshPB).BeginInit();
         ((System.ComponentModel.ISupportInitialize)loggedinDpPB).BeginInit();
         panel3.SuspendLayout();
-        ((System.ComponentModel.ISupportInitialize)circularPB2).BeginInit();
-        ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)currentUserDpPb).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)sendPB).BeginInit();
         SuspendLayout();
         // 
         // panel1
@@ -72,6 +72,8 @@ partial class MainForm
         // closePB
         // 
         closePB.Anchor = ((System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right));
+        closePB.BackgroundImage = ((System.Drawing.Image)resources.GetObject("closePB.BackgroundImage"));
+        closePB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
         closePB.Location = new System.Drawing.Point(773, 41);
         closePB.Name = "closePB";
         closePB.Size = new System.Drawing.Size(45, 45);
@@ -90,7 +92,7 @@ partial class MainForm
         // panel2
         // 
         panel2.BackColor = System.Drawing.Color.WhiteSmoke;
-        panel2.Controls.Add(circularPB3);
+        panel2.Controls.Add(RefreshPB);
         panel2.Controls.Add(loggedinNameLabel);
         panel2.Controls.Add(loggedinDpPB);
         panel2.Location = new System.Drawing.Point(1, 46);
@@ -98,15 +100,16 @@ partial class MainForm
         panel2.Size = new System.Drawing.Size(326, 51);
         panel2.TabIndex = 1;
         // 
-        // circularPB3
+        // RefreshPB
         // 
-        circularPB3.BackgroundImage = ((System.Drawing.Image)resources.GetObject("circularPB3.BackgroundImage"));
-        circularPB3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-        circularPB3.Location = new System.Drawing.Point(272, 10);
-        circularPB3.Name = "circularPB3";
-        circularPB3.Size = new System.Drawing.Size(30, 30);
-        circularPB3.TabIndex = 2;
-        circularPB3.TabStop = false;
+        RefreshPB.BackgroundImage = ((System.Drawing.Image)resources.GetObject("RefreshPB.BackgroundImage"));
+        RefreshPB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+        RefreshPB.Location = new System.Drawing.Point(272, 10);
+        RefreshPB.Name = "RefreshPB";
+        RefreshPB.Size = new System.Drawing.Size(30, 30);
+        RefreshPB.TabIndex = 2;
+        RefreshPB.TabStop = false;
+        RefreshPB.Click += RefreshPB_Click;
         // 
         // loggedinNameLabel
         // 
@@ -131,81 +134,89 @@ partial class MainForm
         // 
         panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right));
         panel3.BackColor = System.Drawing.Color.WhiteSmoke;
-        panel3.Controls.Add(label1);
-        panel3.Controls.Add(label2);
-        panel3.Controls.Add(circularPB2);
+        panel3.Controls.Add(currentUserLastSeenLabel);
+        panel3.Controls.Add(currentUserNameLabel);
+        panel3.Controls.Add(currentUserDpPb);
         panel3.Location = new System.Drawing.Point(323, 46);
         panel3.Name = "panel3";
         panel3.Size = new System.Drawing.Size(477, 51);
         panel3.TabIndex = 2;
         // 
-        // label1
+        // currentUserLastSeenLabel
         // 
-        label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
-        label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-        label1.Location = new System.Drawing.Point(54, 33);
-        label1.Name = "label1";
-        label1.Size = new System.Drawing.Size(120, 18);
-        label1.TabIndex = 3;
-        label1.Text = "label1";
+        currentUserLastSeenLabel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        currentUserLastSeenLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+        currentUserLastSeenLabel.Location = new System.Drawing.Point(54, 33);
+        currentUserLastSeenLabel.Name = "currentUserLastSeenLabel";
+        currentUserLastSeenLabel.Size = new System.Drawing.Size(120, 18);
+        currentUserLastSeenLabel.TabIndex = 3;
+        currentUserLastSeenLabel.Text = "label1";
         // 
-        // label2
+        // currentUserNameLabel
         // 
-        label2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
-        label2.Location = new System.Drawing.Point(54, 0);
-        label2.Name = "label2";
-        label2.Size = new System.Drawing.Size(74, 33);
-        label2.TabIndex = 2;
-        label2.Text = "label2";
+        currentUserNameLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
+        currentUserNameLabel.Location = new System.Drawing.Point(54, 0);
+        currentUserNameLabel.Name = "currentUserNameLabel";
+        currentUserNameLabel.Size = new System.Drawing.Size(74, 33);
+        currentUserNameLabel.TabIndex = 2;
+        currentUserNameLabel.Text = "label2";
         // 
-        // circularPB2
+        // currentUserDpPb
         // 
-        circularPB2.BackgroundImage = ((System.Drawing.Image)resources.GetObject("circularPB2.BackgroundImage"));
-        circularPB2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-        circularPB2.Location = new System.Drawing.Point(3, 3);
-        circularPB2.Name = "circularPB2";
-        circularPB2.Size = new System.Drawing.Size(45, 45);
-        circularPB2.TabIndex = 1;
-        circularPB2.TabStop = false;
+        currentUserDpPb.BackgroundImage = ((System.Drawing.Image)resources.GetObject("currentUserDpPb.BackgroundImage"));
+        currentUserDpPb.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+        currentUserDpPb.Location = new System.Drawing.Point(3, 3);
+        currentUserDpPb.Name = "currentUserDpPb";
+        currentUserDpPb.Size = new System.Drawing.Size(45, 45);
+        currentUserDpPb.TabIndex = 1;
+        currentUserDpPb.TabStop = false;
         // 
         // UserCardsFP
         // 
         UserCardsFP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left));
+        UserCardsFP.AutoScroll = true;
         UserCardsFP.BackColor = System.Drawing.Color.WhiteSmoke;
         UserCardsFP.Location = new System.Drawing.Point(1, 95);
         UserCardsFP.Name = "UserCardsFP";
         UserCardsFP.Size = new System.Drawing.Size(323, 355);
         UserCardsFP.TabIndex = 3;
         // 
-        // flowLayoutPanel2
+        // messagesFP
         // 
-        flowLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right));
-        flowLayoutPanel2.BackColor = System.Drawing.Color.LightCoral;
-        flowLayoutPanel2.BackgroundImage = ((System.Drawing.Image)resources.GetObject("flowLayoutPanel2.BackgroundImage"));
-        flowLayoutPanel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-        flowLayoutPanel2.Location = new System.Drawing.Point(323, 95);
-        flowLayoutPanel2.Name = "flowLayoutPanel2";
-        flowLayoutPanel2.Size = new System.Drawing.Size(477, 315);
-        flowLayoutPanel2.TabIndex = 4;
+        messagesFP.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right));
+        messagesFP.AutoScroll = true;
+        messagesFP.BackColor = System.Drawing.Color.LightCoral;
+        messagesFP.BackgroundImage = ((System.Drawing.Image)resources.GetObject("messagesFP.BackgroundImage"));
+        messagesFP.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+        messagesFP.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+        messagesFP.Location = new System.Drawing.Point(323, 95);
+        messagesFP.Name = "messagesFP";
+        messagesFP.Size = new System.Drawing.Size(477, 315);
+        messagesFP.TabIndex = 4;
+        messagesFP.WrapContents = false;
+        messagesFP.SizeChanged += messagesFP_SizeChanged;
         // 
-        // richTextBox1
+        // messageRTB
         // 
-        richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right));
-        richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-        richTextBox1.Location = new System.Drawing.Point(323, 408);
-        richTextBox1.Name = "richTextBox1";
-        richTextBox1.Size = new System.Drawing.Size(402, 41);
-        richTextBox1.TabIndex = 5;
-        richTextBox1.Text = "";
+        messageRTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right));
+        messageRTB.BorderStyle = System.Windows.Forms.BorderStyle.None;
+        messageRTB.Location = new System.Drawing.Point(323, 408);
+        messageRTB.Name = "messageRTB";
+        messageRTB.Size = new System.Drawing.Size(402, 41);
+        messageRTB.TabIndex = 5;
+        messageRTB.Text = "";
         // 
-        // pictureBox1
+        // sendPB
         // 
-        pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right));
-        pictureBox1.Location = new System.Drawing.Point(725, 408);
-        pictureBox1.Name = "pictureBox1";
-        pictureBox1.Size = new System.Drawing.Size(74, 40);
-        pictureBox1.TabIndex = 6;
-        pictureBox1.TabStop = false;
+        sendPB.Anchor = ((System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right));
+        sendPB.BackgroundImage = ((System.Drawing.Image)resources.GetObject("sendPB.BackgroundImage"));
+        sendPB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+        sendPB.Location = new System.Drawing.Point(728, 408);
+        sendPB.Name = "sendPB";
+        sendPB.Size = new System.Drawing.Size(72, 41);
+        sendPB.TabIndex = 6;
+        sendPB.TabStop = false;
+        sendPB.Click += sendPB_Click;
         // 
         // MainForm
         // 
@@ -213,9 +224,9 @@ partial class MainForm
         AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         ClientSize = new System.Drawing.Size(800, 450);
         ControlBox = false;
-        Controls.Add(pictureBox1);
-        Controls.Add(richTextBox1);
-        Controls.Add(flowLayoutPanel2);
+        Controls.Add(sendPB);
+        Controls.Add(messageRTB);
+        Controls.Add(messagesFP);
         Controls.Add(UserCardsFP);
         Controls.Add(panel3);
         Controls.Add(panel2);
@@ -229,34 +240,34 @@ partial class MainForm
         ((System.ComponentModel.ISupportInitialize)closePB).EndInit();
         ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
         panel2.ResumeLayout(false);
-        ((System.ComponentModel.ISupportInitialize)circularPB3).EndInit();
+        ((System.ComponentModel.ISupportInitialize)RefreshPB).EndInit();
         ((System.ComponentModel.ISupportInitialize)loggedinDpPB).EndInit();
         panel3.ResumeLayout(false);
-        ((System.ComponentModel.ISupportInitialize)circularPB2).EndInit();
-        ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+        ((System.ComponentModel.ISupportInitialize)currentUserDpPb).EndInit();
+        ((System.ComponentModel.ISupportInitialize)sendPB).EndInit();
         ResumeLayout(false);
     }
+
+    private WhatsAppClone.CircularPB sendPB;
 
     private System.Windows.Forms.PictureBox closePB;
 
     private System.Windows.Forms.PictureBox pictureBox2;
 
-    private System.Windows.Forms.Label label1;
+    public System.Windows.Forms.Label currentUserLastSeenLabel;
 
-    private WhatsAppClone.CircularPB circularPB3;
+    private WhatsAppClone.CircularPB RefreshPB;
 
-    private System.Windows.Forms.Label label2;
+    public System.Windows.Forms.Label currentUserNameLabel;
 
-    private WhatsAppClone.CircularPB circularPB2;
+    public WhatsAppClone.CircularPB currentUserDpPb;
     private System.Windows.Forms.Label loggedinNameLabel;
 
     private WhatsAppClone.CircularPB loggedinDpPB;
 
-    private System.Windows.Forms.PictureBox pictureBox1;
+    private System.Windows.Forms.RichTextBox messageRTB;
 
-    private System.Windows.Forms.RichTextBox richTextBox1;
-
-    private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+    public System.Windows.Forms.FlowLayoutPanel messagesFP;
 
     private System.Windows.Forms.FlowLayoutPanel UserCardsFP;
 
