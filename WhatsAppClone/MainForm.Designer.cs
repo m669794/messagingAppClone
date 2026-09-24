@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+﻿﻿﻿using System.ComponentModel;
 
 namespace WhatsAppClone;
 
@@ -32,7 +32,7 @@ partial class MainForm
     private void InitializeComponent()
     {
         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-        panel1 = new System.Windows.Forms.Panel();
+        TitleBarPanel = new System.Windows.Forms.Panel();
         closePB = new System.Windows.Forms.PictureBox();
         pictureBox2 = new System.Windows.Forms.PictureBox();
         panel2 = new System.Windows.Forms.Panel();
@@ -47,7 +47,7 @@ partial class MainForm
         messagesFP = new System.Windows.Forms.FlowLayoutPanel();
         messageRTB = new System.Windows.Forms.RichTextBox();
         sendPB = new WhatsAppClone.CircularPB();
-        panel1.SuspendLayout();
+        TitleBarPanel.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)closePB).BeginInit();
         ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
         panel2.SuspendLayout();
@@ -58,16 +58,17 @@ partial class MainForm
         ((System.ComponentModel.ISupportInitialize)sendPB).BeginInit();
         SuspendLayout();
         // 
-        // panel1
+        // TitleBarPanel
         // 
-        panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right));
-        panel1.BackColor = System.Drawing.Color.Green;
-        panel1.Controls.Add(closePB);
-        panel1.Controls.Add(pictureBox2);
-        panel1.Location = new System.Drawing.Point(-18, -41);
-        panel1.Name = "panel1";
-        panel1.Size = new System.Drawing.Size(839, 91);
-        panel1.TabIndex = 0;
+        TitleBarPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right));
+        TitleBarPanel.BackColor = System.Drawing.Color.Green;
+        TitleBarPanel.Controls.Add(closePB);
+        TitleBarPanel.Controls.Add(pictureBox2);
+        TitleBarPanel.Location = new System.Drawing.Point(-18, -41);
+        TitleBarPanel.Name = "TitleBarPanel";
+        TitleBarPanel.Size = new System.Drawing.Size(839, 91);
+        TitleBarPanel.TabIndex = 0;
+        TitleBarPanel.MouseDown += TitleBarPanel_MouseDown;
         // 
         // closePB
         // 
@@ -230,13 +231,14 @@ partial class MainForm
         Controls.Add(UserCardsFP);
         Controls.Add(panel3);
         Controls.Add(panel2);
-        Controls.Add(panel1);
+        Controls.Add(TitleBarPanel);
+        FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
         MaximizeBox = false;
         MdiChildrenMinimizedAnchorBottom = false;
         MinimizeBox = false;
         Text = "MainForm";
         Load += MainForm_Load;
-        panel1.ResumeLayout(false);
+        TitleBarPanel.ResumeLayout(false);
         ((System.ComponentModel.ISupportInitialize)closePB).EndInit();
         ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
         panel2.ResumeLayout(false);
@@ -275,7 +277,7 @@ partial class MainForm
 
     private System.Windows.Forms.Panel panel2;
 
-    private System.Windows.Forms.Panel panel1;
+    private System.Windows.Forms.Panel TitleBarPanel;
 
     #endregion
 }

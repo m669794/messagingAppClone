@@ -1,10 +1,24 @@
-﻿
+﻿﻿﻿
+using System;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
 namespace WhatsAppClone;
 
 public partial class MainForm : Form
 {
+    // 1. Import the native Windows libraries
+    [DllImport("user32.dll")]
+    public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        
+    [DllImport("user32.dll")]
+    public static extern bool ReleaseCapture();
+
+    // 2. Define the Windows Message constants
+    private const int WM_NCLBUTTONDOWN = 0xA1;
+    private const int HT_CAPTION = 0x2;
+    
     private string loggedinName;
     private string loggedinEmail;
     public string currentEmail;
@@ -13,6 +27,9 @@ public partial class MainForm : Form
     public MainForm(string name, byte[]? image, string email)
     {
         InitializeComponent();
+        
+        // 3. Attach the MouseDown event to your custom panel
+        TitleBarPanel.MouseDown += TitleBarPanel_MouseDown;
 
         this.loggedinName = name;
         this.loggedinPB = image;
@@ -191,5 +208,18 @@ public partial class MainForm : Form
     {
         UserCardsFP.Controls.Clear();
         MainForm_Load(sender,e);
+    }
+
+    private void TitleBarPanel_MouseDown(object sender, MouseEventArgs e)
+    {
+        // Only drag if it's a left mouse click
+        if (e.Button == MouseButtons.Left)
+        {
+            // Release the mouse capture from the panel
+            ReleaseCapture();
+                
+            // Send a message to Windows telling it that the title bar was clicked
+            SendMessage(this.Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+        }
     }
 }
